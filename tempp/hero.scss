@@ -1,0 +1,203 @@
+$title:"Didot",serif;
+$black: #000000 ; 
+$pink:#d9cac1;
+// Global
+$reveal_dur: .4s;
+$reveal_del: .05s;
+$home_del: .8s;
+$reveal_ease: cubic-bezier(.19,.47,.54,.87);
+
+$breakpoint_mobile: 769px; 
+
+#hero {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+
+   
+   /*  min-width: $desktop_min_width;      
+    min-height: $desktop_min_height;     
+ */
+    #title-container {
+        display: block; 
+        position: absolute;
+        bottom: calc(48% - 100px);
+        @media screen and ( max-width: 1400px ) {            
+            bottom: calc(48% - 80px);
+        }
+        @media screen and ( max-width: 1100px ) {            
+            bottom: calc(48% - 60px);
+        }        
+        left: 50%;
+        transform: translate(-50%, 0%);    
+        transition: height .56s 0s ease, bottom .6s 0s cubic-bezier(.22,.6,.48,.97), opacity 1s 0s, top 1.5s 0s cubic-bezier(.59,.05,.33,.93);
+
+        height: 0vw;
+        opacity: 0;
+
+        width: 100%;
+        overflow: hidden;
+
+        z-index: 4;
+        
+        h1#title {
+            display: block;
+            position: absolute;
+            margin: 0 0 -1vw 0;
+            padding: 0;
+            bottom: 0;
+			width: 100%;
+            letter-spacing: -0.2vw;
+            text-align: center;
+
+            span {
+                display: inline-block;
+                position: relative;
+                transition: all .5s 0s cubic-bezier(.08,.55,.39,.97);
+
+                font-family: $title;
+                color: $black;
+                font-weight: normal;
+
+                font-size: 230px;
+                line-height: 230px;
+                @media screen and ( max-width: 1400px ) {
+                    font-size: 180px;
+                    line-height: 180px;                    
+                }
+                @media screen and ( max-width: 1100px ) {
+                    font-size: 140px;
+                    line-height: 140px;                    
+                }                
+
+                transform: translateY(75%);
+                opacity: 0;                
+
+            }
+        }
+    }
+}
+body.loaded {
+	#hero {
+		#title-container {
+            opacity: 1;
+            bottom: calc(50% - 110px);
+            height: 220px;
+            @media screen and ( max-width: 1400px ) {            
+                bottom: calc(50% - 80px);
+                height: 160px;                
+            }
+            @media screen and ( max-width: 1100px ) {            
+                bottom: calc(50% - 60px);
+                height: 120px;                
+            }
+
+            h1#title span {
+                transform: translateY(0%);
+                opacity: 1;                 
+            }
+		}
+	}
+}
+
+.ellipse {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 26vw;
+    width: 26vw;
+    min-width: 365px;
+    min-height: 365px;
+    border-radius: 50%;
+    transform: translate(-50%,-50%) scale(1.05);
+    transition: transform .9s 0s ease;
+    background: $pink;
+    z-index: 3;
+
+    p.tag {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 78%;
+        opacity: 0;
+        transition: all .35s $reveal_del+$home_del ease-out;
+
+        &.hide {
+            opacity: 0 !important;
+        }
+    }
+
+}
+body.loaded #hero .ellipse {
+    transform: translate(-50%,-50%) scale(1);    
+    p.tag {
+        top: 81%;
+        opacity: 1;
+    }
+}
+
+body[data-handheld="true"] {
+
+    .ellipse {
+        min-width: auto !important;
+        min-height: auto !important;
+        width: 48vw;
+        height: 48vw;     
+        @media screen and ( max-width: 641px ) { 
+            width: 52vw;
+            height: 52vw;     
+        }
+
+        max-width: 340px;
+        max-height: 340px;
+
+    }
+
+    #hero {
+        min-width: auto !important;
+        min-height: auto !important;
+
+        #title-container {
+            top: 50vh;
+            bottom: auto;
+            height: 15vw;
+
+            transform: translateY(-50%) translateX(-50%);
+
+            h1#title {
+                span {
+                    font-size: 16vw;
+                    line-height: 16vw;
+                }
+            }
+        }        
+
+    }
+
+}
+body[data-device="tablet"] {
+    .ellipse {
+        p.tag {
+            margin-top: 17.5vh;
+        }
+    }
+}
+body[data-device="mobile"] {
+    .ellipse {
+        p.tag {
+            display: none;
+        }
+    }
+}
+
+body[data-page="home"][data-sindex="1"][data-handheld="true"] {
+    #hero {
+        #title-container {
+            top: 25vh;
+        }
+    }
+}

@@ -1,0 +1,197 @@
+#hero {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  /*  min-width: $desktop_min_width;      
+    min-height: $desktop_min_height;     
+ */
+}
+
+#hero #title-container {
+  display: block;
+  position: absolute;
+  bottom: calc(48% - 100px);
+  left: 50%;
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
+  -webkit-transition: height 0.56s 0s ease, bottom 0.6s 0s cubic-bezier(0.22, 0.6, 0.48, 0.97), opacity 1s 0s, top 1.5s 0s cubic-bezier(0.59, 0.05, 0.33, 0.93);
+  transition: height 0.56s 0s ease, bottom 0.6s 0s cubic-bezier(0.22, 0.6, 0.48, 0.97), opacity 1s 0s, top 1.5s 0s cubic-bezier(0.59, 0.05, 0.33, 0.93);
+  height: 0vw;
+  opacity: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 4;
+}
+
+@media screen and (max-width: 1400px) {
+  #hero #title-container {
+    bottom: calc(48% - 80px);
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  #hero #title-container {
+    bottom: calc(48% - 60px);
+  }
+}
+
+#hero #title-container h1#title {
+  display: block;
+  position: absolute;
+  margin: 0 0 -1vw 0;
+  padding: 0;
+  bottom: 0;
+  width: 100%;
+  letter-spacing: -0.2vw;
+  text-align: center;
+}
+
+#hero #title-container h1#title span {
+  display: inline-block;
+  position: relative;
+  -webkit-transition: all 0.5s 0s cubic-bezier(0.08, 0.55, 0.39, 0.97);
+  transition: all 0.5s 0s cubic-bezier(0.08, 0.55, 0.39, 0.97);
+  font-family: "Didot", serif;
+  color: #000000;
+  font-weight: normal;
+  font-size: 230px;
+  line-height: 230px;
+  -webkit-transform: translateY(75%);
+          transform: translateY(75%);
+  opacity: 0;
+}
+
+@media screen and (max-width: 1400px) {
+  #hero #title-container h1#title span {
+    font-size: 180px;
+    line-height: 180px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  #hero #title-container h1#title span {
+    font-size: 140px;
+    line-height: 140px;
+  }
+}
+
+body.loaded #hero #title-container {
+  opacity: 1;
+  bottom: calc(50% - 110px);
+  height: 220px;
+}
+
+@media screen and (max-width: 1400px) {
+  body.loaded #hero #title-container {
+    bottom: calc(50% - 80px);
+    height: 160px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  body.loaded #hero #title-container {
+    bottom: calc(50% - 60px);
+    height: 120px;
+  }
+}
+
+body.loaded #hero #title-container h1#title span {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+  opacity: 1;
+}
+
+.ellipse {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 26vw;
+  width: 26vw;
+  min-width: 365px;
+  min-height: 365px;
+  border-radius: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(1.05);
+          transform: translate(-50%, -50%) scale(1.05);
+  -webkit-transition: -webkit-transform .9s 0s ease;
+  transition: -webkit-transform .9s 0s ease;
+  transition: transform .9s 0s ease;
+  transition: transform .9s 0s ease, -webkit-transform .9s 0s ease;
+  background: #d9cac1;
+  z-index: 3;
+}
+
+.ellipse p.tag {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: 78%;
+  opacity: 0;
+  -webkit-transition: all 0.35s 0.85s ease-out;
+  transition: all 0.35s 0.85s ease-out;
+}
+
+.ellipse p.tag.hide {
+  opacity: 0 !important;
+}
+
+body.loaded #hero .ellipse {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+}
+
+body.loaded #hero .ellipse p.tag {
+  top: 81%;
+  opacity: 1;
+}
+
+body[data-handheld="true"] .ellipse {
+  min-width: auto !important;
+  min-height: auto !important;
+  width: 48vw;
+  height: 48vw;
+  max-width: 340px;
+  max-height: 340px;
+}
+
+@media screen and (max-width: 641px) {
+  body[data-handheld="true"] .ellipse {
+    width: 52vw;
+    height: 52vw;
+  }
+}
+
+body[data-handheld="true"] #hero {
+  min-width: auto !important;
+  min-height: auto !important;
+}
+
+body[data-handheld="true"] #hero #title-container {
+  top: 50vh;
+  bottom: auto;
+  height: 15vw;
+  -webkit-transform: translateY(-50%) translateX(-50%);
+          transform: translateY(-50%) translateX(-50%);
+}
+
+body[data-handheld="true"] #hero #title-container h1#title span {
+  font-size: 16vw;
+  line-height: 16vw;
+}
+
+body[data-device="tablet"] .ellipse p.tag {
+  margin-top: 17.5vh;
+}
+
+body[data-device="mobile"] .ellipse p.tag {
+  display: none;
+}
+
+body[data-page="home"][data-sindex="1"][data-handheld="true"] #hero #title-container {
+  top: 25vh;
+}
+/*# sourceMappingURL=hero.css.map */
